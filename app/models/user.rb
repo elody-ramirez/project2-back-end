@@ -2,5 +2,6 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :examples
+  has_many :userplayers, dependent: :destroy
+  has_many :players, through: :userplayers
 end

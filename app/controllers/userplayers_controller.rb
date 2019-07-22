@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class UserplayersController < ApplicationController
+class UserplayersController < ProtectedController
   before_action :set_userplayer, only: %i[show update destroy]
 
   # GET /userplayers
   def index
-    @userplayers = Userplayer.all
+    @userplayers = current_user.userplayers.all
 
     render json: @userplayers
   end
@@ -17,7 +17,7 @@ class UserplayersController < ApplicationController
 
   # POST /userplayers
   def create
-    @userplayer = Userplayer.new(userplayer_params)
+    @userplayer = current_user.userplayers.new(userplayer_params)
 
     if @userplayer.save
       render json: @userplayer, status: :created, location: @userplayer
@@ -38,13 +38,15 @@ class UserplayersController < ApplicationController
   # DELETE /userplayers/1
   def destroy
     @userplayer.destroy
+
+    head :no_content
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_userplayer
-    @userplayer = Userplayer.find(params[:id])
+    @userplayer = current_user.userplayers.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
