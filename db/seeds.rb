@@ -9,3 +9,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# This file seeds `book`, `author`, `librarian`, and `member` resources
+
+require 'csv'
+
+Player.transaction do
+  CSV.foreach(Rails.root + 'data/players.csv',
+              headers: true,
+              header_converters: ->(h) { h.downcase.to_sym }) do |player_row|
+    player = player_row.to_hash
+    Player.create player unless Player.exists? player
+  end
+end
