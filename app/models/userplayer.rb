@@ -5,4 +5,5 @@ class Userplayer < ApplicationRecord
   belongs_to :player
 
   validates_associated :user
+  validates :user, presence: true
 end
