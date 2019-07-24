@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2019_07_24_142937) do
   enable_extension "plpgsql"
 
   create_table "createdplayers", force: :cascade do |t|
-    t.string "name"
-    t.integer "rating"
-    t.string "position"
-    t.string "height"
-    t.bigint "user_id"
+    t.string "name", null: false
+    t.integer "rating", null: false
+    t.string "position", null: false
+    t.string "height", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_createdplayers_on_user_id"
