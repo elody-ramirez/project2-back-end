@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlayersController < ApplicationController
+class PlayersController < OpenReadController
   before_action :set_player, only: %i[show update destroy]
 
   # GET /players
