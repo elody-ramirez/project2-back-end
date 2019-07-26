@@ -1,7 +1,8 @@
 # NBA Fantasy Team Creator
 
-## Link to Front End Repo
-https://github.com/elody-ramirez/project2-client
+## Links to Front End Repo
+Deployed: https://elody-ramirez.github.io/project2-client/
+Repo: https://github.com/elody-ramirez/project2-client
 
 ## Technologies Used
 - Ruby on Rails
